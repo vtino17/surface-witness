@@ -1,0 +1,14 @@
+{
+  "policyVersion": "1.0",
+  "serverId": "support-mcp",
+  "maxTools": 4,
+  "allowedNewTools": ["health_*"],
+  "deniedToolPatterns": ["*shell*", "*exec*", "*delete*"],
+  "descriptionMaxChars": 800,
+  "blockMetadataSignals": true,
+  "requireAnnotationsForNewTools": true,
+  "requireOutputSchemaForNewTools": true,
+  "blockUnapprovedHighRisk": true,
+  "blockToolRemoval": false,
+  "approvals": []
+}

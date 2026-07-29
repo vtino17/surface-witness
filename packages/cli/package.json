@@ -1,0 +1,9 @@
+{
+  "name": "@surfacewitness/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": { "surface-witness": "./dist/index.js" },
+  "dependencies": { "@surfacewitness/core": "workspace:*" },
+  "scripts": { "build": "tsc -p tsconfig.build.json" }
+}

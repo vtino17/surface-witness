@@ -1,0 +1,26 @@
+name: Drift control proposal
+description: Propose another deterministic capability-drift rule
+title: "control: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: threat
+    attributes:
+      label: Threat
+      description: Which MCP surface change should be detected?
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: Deterministic rule
+      description: How should the change be classified without a model?
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Limitations
+      description: Describe likely false positives and false negatives.
+    validations:
+      required: true

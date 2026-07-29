@@ -1,0 +1,30 @@
+{
+  "name": "surface-witness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Capability-drift firewall for Model Context Protocol tool surfaces.",
+  "type": "module",
+  "packageManager": "pnpm@10.14.0",
+  "scripts": {
+    "build": "pnpm --filter @surfacewitness/core build && pnpm --filter @surfacewitness/cli build && pnpm --filter @surfacewitness/studio build",
+    "dev": "pnpm --filter @surfacewitness/studio dev",
+    "lint": "eslint .",
+    "typecheck": "tsc -b packages/core/tsconfig.build.json packages/cli/tsconfig.build.json && tsc -p apps/studio/tsconfig.json --noEmit",
+    "test": "vitest run",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "presurface": "pnpm --filter @surfacewitness/core build && pnpm --filter @surfacewitness/cli build",
+    "surface": "node packages/cli/dist/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.20.0",
+    "eslint": "^9.39.5",
+    "globals": "^16.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.65.0",
+    "vitest": "^3.2.7"
+  }
+}
