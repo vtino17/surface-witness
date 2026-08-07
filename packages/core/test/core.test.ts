@@ -49,6 +49,23 @@ describe("surface snapshots", () => {
     expect(await verifySnapshot(snapshot)).toBe(true);
     expect(await verifySnapshot({ ...snapshot, serverVersion: "tampered" })).toBe(false);
   });
+
+  it("rejects non-finite schema constraints at the snapshot boundary", async () => {
+    const { baseline, stable } = await sampleSurfaces();
+    const candidate = structuredClone(stable);
+    candidate.tools[0]!.inputSchema.maximum = Number.NaN;
+    await expect(diffSurfaces({ baseline, candidate, policy: samplePolicy }))
+      .rejects.toThrow("JSON-compatible finite values");
+  });
+
+  it("rejects invalid snapshot timestamps deterministically", async () => {
+    const { baseline, stable } = await sampleSurfaces();
+    await expect(diffSurfaces({
+      baseline: { ...baseline, capturedAt: "not-a-date" },
+      candidate: stable,
+      policy: samplePolicy,
+    })).rejects.toThrow("capturedAt");
+  });
 });
 
 describe("capability drift", () => {
